@@ -1,3 +1,6 @@
+---
+layout: compress
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,39 +23,24 @@
     <script src="https://kit.fontawesome.com/d9b09040a7.js" crossorigin="anonymous"></script>
 
     <style>
-        {% if site.dark-theme == "auto" %}
-            {% capture scss_sheet %}
-                {% include style.scss %}
-                @media (prefers-color-scheme: dark) {
-                    {% include style-dark.scss %}
-                }
-            {% endcapture %}
-        {% elsif site.dark-theme %}
-            {% capture scss_sheet %}{% include style-dark.scss %}{% endcapture %}
-        {% else %}
-            {% capture scss_sheet %}{% include style.scss %}{% endcapture %}
-        {% endif %}
+    
+    {% if site.dark-theme == "auto" %}
+        {% capture scss_sheet %}
+            {% include style.scss %}
+            @media (prefers-color-scheme: dark) {
+                {% include style-dark.scss %}
+            }
+        {% endcapture %}
+    {% elsif site.dark-theme %}
+        {% capture scss_sheet %}{% include style-dark.scss %}{% endcapture %}
+    {% else %}
+        {% capture scss_sheet %}{% include style.scss %}{% endcapture %}
+    {% endif %}
 
-        {{ scss_sheet | scssify }}
+    {{ scss_sheet | scssify }}
     </style>
-<style>
-    body {
-        display: flex;
-        min-height: 100vh;
-        flex-direction: column;
-    }
-
-    .wrapper-normal, .wrapper-large {
-        flex: 1;
-    }
-
-    .footer {
-        margin-top: auto;
-    }
-</style>
 
 </head>
-
 <body>
     <div class="wrapper-{% if site.width == "normal" %}normal{% elsif site.width == "large" %}large{% endif %}">
         {% if page.layout == "post" %}
@@ -65,18 +53,10 @@
             {% endif %}
         {% endif %}
 
-        {{ content }}
-
-        {% if page.layout != "page" and page.layout != "post" %}
-    
-        {% endif %}
-
-        </div>
+            {{ content }}
+            </div>
+                </div>
+            </div>
     </div>
 </body>
 </html>
-
-
-</body>
-</html>
-
