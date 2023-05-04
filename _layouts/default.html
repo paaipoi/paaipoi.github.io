@@ -54,9 +54,21 @@ layout: compress
         {% endif %}
 
             {{ content }}
-            </div>
-                </div>
-            </div>
+        </div>
     </div>
+    {% if page.layout != "post" %}
+    <footer class="footer-main" style="position:fixed; bottom:0; left:0; right:0; background-color: #222; color: #fff; padding: 10px;">
+        {{ site.title }} © {{ site.time | date: '%Y' }}
+        <a class="link" href="{{ site.url }}/feed.xml" target="_blank">
+            <i class="fa-solid fa-rss"></i>
+        </a>
+        <p class="extra" style="font-size: 9px; margin-bottom: 0;">
+             Modified from
+            <a class="link" href="https://github.com/sergiokopplin/indigo" style="color: #fff;">Kopplin</a>
+        </p>
+    </footer>
+    {% endif %}
+
 </body>
 </html>
+
